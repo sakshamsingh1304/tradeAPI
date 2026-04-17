@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+slowapi
+duckduckgo-search
+groq
+python-dotenv
