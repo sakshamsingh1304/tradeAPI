@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Depends, Request, HTTPException
-from fastapi.responses import PlainTextResponse
+from fastapi.responses import PlainTextResponse, RedirectResponse
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
@@ -44,14 +44,10 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 # Routes
 # ---------------------------------------------------------------------------
 
-@app.get("/", tags=["Health"])
+@app.get("/", include_in_schema=False)
 def read_root():
-    """Health-check / welcome endpoint."""
-    return {
-        "message": "Trade Opportunities API is running.",
-        "docs": "/docs",
-        "usage": "GET /analyze/{sector}",
-    }
+    """Redirects to the Swagger UI."""
+    return RedirectResponse(url="/docs")
 
 
 @app.get("/analyze/{sector}", response_class=PlainTextResponse, tags=["Analysis"])
