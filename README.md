@@ -48,11 +48,11 @@ Create a `.env` file in the project root (you can copy `.env.example`):
 
 ```env
 GROQ_API_KEY=your_groq_api_key_here
-APP_API_KEY=guest-token-12345
+APP_API_KEY=12345
 ```
 
 - **`GROQ_API_KEY`** – Get a free key at [console.groq.com](https://console.groq.com)
-- **`APP_API_KEY`** – Any string you choose. Clients must send this in the `X-API-Key` header. Defaults to `guest-token-12345` if not set.
+- **`APP_API_KEY`** – The API key clients must send in the `X-API-Key` header. Set to `12345`.
 
 ### 3. Run the Application
 
@@ -106,7 +106,7 @@ Accepts a sector name and returns a structured Markdown market analysis report.
 ```bash
 curl -X GET \
   'http://localhost:8000/analyze/pharmaceuticals' \
-  -H 'X-API-Key: guest-token-12345'
+  -H 'X-API-Key: 12345'
 ```
 
 **Example Response** (Markdown):
@@ -150,7 +150,7 @@ Returns all tracked in-memory sessions for monitoring.
 
 **Example:**
 ```bash
-curl http://localhost:8000/sessions -H 'X-API-Key: guest-token-12345'
+curl http://localhost:8000/sessions -H 'X-API-Key: 12345'
 ```
 
 **Response:**
